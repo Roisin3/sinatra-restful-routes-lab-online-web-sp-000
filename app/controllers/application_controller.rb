@@ -2,6 +2,7 @@ require './config/environment'
 
 class ApplicationController < Sinatra::Base
   set :views, Proc.new{ File.join(root, "../views/") }
+
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
@@ -22,7 +23,7 @@ class ApplicationController < Sinatra::Base
     erb :show
   end
 
-  get '/recipe/:id/edit' do
+  get '/recipes/:id/edit' do
     @recipe = Recipe.find_by_id(params[:id])
     erb :edit
   end
